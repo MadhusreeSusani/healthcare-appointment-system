@@ -1,0 +1,698 @@
+:root {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #fff;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+  --accent: #aa3bff;
+  --accent-bg: rgba(170, 59, 255, 0.1);
+  --accent-border: rgba(170, 59, 255, 0.5);
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #16171d;
+    --border: #2e303a;
+    --code-bg: #1f2028;
+    --accent: #c084fc;
+    --accent-bg: rgba(192, 132, 252, 0.15);
+    --accent-border: rgba(192, 132, 252, 0.5);
+    --social-bg: rgba(47, 48, 58, 0.5);
+    --shadow:
+      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  }
+
+  #social .button-icon {
+    filter: invert(1) brightness(2);
+  }
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  width: 1126px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  border-inline: 1px solid var(--border);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+p {
+  margin: 0;
+}
+
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+}
+.my-appointments {
+  max-width: 1000px;
+  margin: 60px auto;
+  padding: 20px;
+}
+
+.my-appointments h2 {
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 35px;
+}
+
+.appointment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.appointment-card {
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+.appointment-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.appointment-top h3 {
+  margin-bottom: 8px;
+}
+
+.appointment-top p {
+  color: #64748b;
+}
+
+.appointment-details {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.appointment-details p {
+  margin: 0;
+}
+
+.appointment-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.reschedule-button,
+.cancel-button {
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.reschedule-button {
+  border: none;
+  background: #2563eb;
+  color: white;
+}
+
+.cancel-button {
+  border: 1px solid #ef4444;
+  background: white;
+  color: #dc2626;
+}
+
+.reschedule-button:hover,
+.cancel-button:hover {
+  opacity: 0.85;
+}
+
+.doctor-icon {
+  font-size: 45px;
+  margin-bottom: 15px;
+}
+
+.empty-appointments {
+  background: white;
+  border-radius: 15px;
+  padding: 50px 20px;
+}
+
+.empty-appointments p {
+  margin: 15px 0 25px;
+  color: #64748b;
+}
+
+.empty-icon {
+  font-size: 50px;
+}
+/* ================= PATIENT RECORDS ================= */
+
+.records-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 30px;
+}
+
+.records-header {
+  margin-bottom: 35px;
+}
+
+.records-header h2 {
+  font-size: 36px;
+  margin: 8px 0;
+}
+
+.records-header p:last-child {
+  color: #64748b;
+}
+
+
+/* Records Cards */
+
+.records-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.record-card {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.record-icon {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.record-card h3 {
+  margin-bottom: 18px;
+  color: #172033;
+}
+
+.record-info p {
+  margin: 10px 0;
+  color: #64748b;
+}
+
+.record-info strong {
+  color: #334155;
+}
+
+
+/* Doctor Note */
+
+.doctor-note {
+  padding: 15px;
+  background: #f4f8fb;
+  border-radius: 10px;
+}
+
+.doctor-note p {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+
+/* Appointment History */
+
+.records-history {
+  margin-top: 35px;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.records-history h3 {
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.history-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.history-row:last-child {
+  border-bottom: none;
+}
+
+.history-row p {
+  margin-top: 6px;
+  color: #64748b;
+}
+
+.no-history {
+  color: #64748b;
+}
+
+
+/* Records Mobile */
+
+@media (max-width: 700px) {
+
+  .records-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .records-section {
+    padding: 40px 20px;
+  }
+
+  .records-header h2 {
+    font-size: 30px;
+  }
+
+  .history-row {
+    gap: 15px;
+    align-items: flex-start;
+  }
+}/* ================= REMINDERS ================= */
+
+.reminders-section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 30px;
+  min-height: 600px;
+}
+
+.reminders-header {
+  margin-bottom: 35px;
+}
+
+.reminders-header h2 {
+  font-size: 36px;
+  margin: 8px 0;
+}
+
+.reminders-header p:last-child {
+  color: #64748b;
+}
+
+.reminder-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.reminder-card {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.reminder-symbol {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eff6ff;
+  border-radius: 50%;
+  font-size: 28px;
+}
+
+.reminder-content {
+  flex: 1;
+}
+
+.reminder-label {
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #2563eb;
+}
+
+.reminder-content h3 {
+  margin: 6px 0 10px;
+}
+
+.reminder-content p {
+  margin: 5px 0;
+  color: #64748b;
+}
+
+.no-reminders {
+  background: white;
+  text-align: center;
+  padding: 60px 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.reminder-icon {
+  font-size: 50px;
+  margin-bottom: 15px;
+}
+
+.no-reminders h3 {
+  margin-bottom: 10px;
+}
+
+.no-reminders p {
+  color: #64748b;
+  margin-bottom: 25px;
+}
+
+
+/* Reminder mobile */
+
+@media (max-width: 700px) {
+
+  .reminder-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .reminder-symbol {
+    width: 50px;
+    height: 50px;
+  }
+
+  .reminders-section {
+    padding: 40px 20px;
+  }
+
+  .reminders-header h2 {
+    font-size: 30px;
+  }
+}
+/* ================= VIRTUAL CONSULTATION ================= */
+
+.virtual-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px 30px;
+  min-height: 600px;
+}
+
+.virtual-header {
+  margin-bottom: 35px;
+}
+
+.virtual-header h2 {
+  font-size: 36px;
+  margin: 8px 0;
+}
+
+.virtual-header p:last-child {
+  color: #64748b;
+}
+
+.virtual-card {
+  max-width: 550px;
+  margin: auto;
+  background: white;
+  padding: 40px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.virtual-icon {
+  font-size: 50px;
+  margin-bottom: 15px;
+}
+
+.virtual-card h3 {
+  margin-bottom: 25px;
+}
+
+.virtual-card label {
+  display: block;
+  margin: 15px 0 8px;
+  font-weight: 600;
+}
+
+.virtual-card select {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #d1d5db;
+  border-radius: 9px;
+  font-size: 15px;
+  background: white;
+}
+
+.virtual-card .primary-button {
+  width: 100%;
+  margin-top: 25px;
+}
+
+.consultation-confirmed {
+  max-width: 550px;
+  margin: auto;
+  padding: 45px;
+  background: white;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.success-icon {
+  font-size: 55px;
+  margin-bottom: 15px;
+}
+
+.consultation-confirmed h3 {
+  margin-bottom: 20px;
+}
+
+.consultation-confirmed p {
+  margin: 10px 0;
+  color: #475569;
+}
+
+.consultation-confirmed .primary-button {
+  margin-top: 20px;
+}
+
+
+/* ================= LOGIN ================= */
+
+.login-section {
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 20px;
+  background: #f4f8fb;
+}
+
+.login-container {
+  width: 900px;
+  max-width: 100%;
+  min-height: 560px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.login-visual {
+  padding: 55px;
+  background: linear-gradient(145deg, #0f766e, #2563eb);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-logo {
+  font-size: 50px;
+  margin-bottom: 25px;
+}
+
+.login-visual h1 {
+  font-size: 38px;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.login-visual p {
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.login-feature {
+  margin: 10px 0;
+  font-size: 15px;
+}
+
+.login-form-container {
+  padding: 55px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-form-container h2 {
+  font-size: 30px;
+  margin: 8px 0;
+}
+
+.login-subtitle {
+  color: #64748b;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+.login-form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form-container label {
+  margin-bottom: 8px;
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+.login-form-container input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #d7dee8;
+  border-radius: 10px;
+  font-size: 15px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.login-form-container input:focus {
+  border-color: #2563eb;
+}
+
+.login-button {
+  margin-top: 25px;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: #2563eb;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  opacity: 0.9;
+}
+
+.demo-note {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #94a3b8;
+  text-align: center;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 700px) {
+
+  .navbar {
+    padding: 15px 20px;
+  }
+
+  .nav-links {
+    gap: 12px;
+    font-size: 13px;
+    flex-wrap: wrap;
+  }
+
+  .login-container {
+    grid-template-columns: 1fr;
+  }
+
+  .login-visual {
+    padding: 35px;
+  }
+
+  .login-form-container {
+    padding: 35px;
+  }
+
+  .virtual-section {
+    padding: 40px 20px;
+  }
+
+  .virtual-card,
+  .consultation-confirmed {
+    padding: 25px;
+  }
+
+}
